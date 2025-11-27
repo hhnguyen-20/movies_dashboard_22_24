@@ -12,7 +12,9 @@ We pull in IMDb data (movies, genres, directors, etc.), store it in MySQL, and u
 ## Setup
 
 ### Database
-First, get the database going. Open MySQL and run the `db.sql` script. That'll create the database, tables, and load the data from the CSV files (assuming they're in `~/Desktop/movies_2324/data/`).
+First, get the database going. Open MySQL and run the `db.sql` script. That'll create the database, tables, and load the data from the CSV files (assuming they're in `~/Desktop/movies_dashboard_22_24/data/`).
+
+Second, run `queries.sql` script.run to verify that the database has been successfully loaded and create an index for faster data retrieval.
 
 ### Python Environment
 To run the Flask app:

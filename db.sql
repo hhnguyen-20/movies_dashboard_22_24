@@ -54,7 +54,7 @@ CREATE TABLE Ratings (
 
 SET GLOBAL local_infile = true;
 
-LOAD DATA LOCAL INFILE '~/Desktop/movies_2324/data/movies.csv'
+LOAD DATA LOCAL INFILE '~/Desktop/movies_dashboard_22_24/data/movies.csv'
 INTO TABLE Movies
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -62,7 +62,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (movieID, primaryTitle, isAdult, startYear, runtimeMinutes);
 
-LOAD DATA LOCAL INFILE '~/Desktop/movies_2324/data/genres.csv'
+LOAD DATA LOCAL INFILE '~/Desktop/movies_dashboard_22_24/data/genres.csv'
 INTO TABLE Genres
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -70,7 +70,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (movieID, genre);
 
-LOAD DATA LOCAL INFILE '~/Desktop/movies_2324/data/names.csv'
+LOAD DATA LOCAL INFILE '~/Desktop/movies_dashboard_22_24/data/names.csv'
 INTO TABLE Names
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -78,7 +78,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (nameID, primaryName);
 
-LOAD DATA LOCAL INFILE '~/Desktop/movies_2324/data/directors.csv'
+LOAD DATA LOCAL INFILE '~/Desktop/movies_dashboard_22_24/data/directors.csv'
 INTO TABLE Directors
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -86,7 +86,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (movieID, nameID);
 
-LOAD DATA LOCAL INFILE '~/Desktop/movies_2324/data/writers.csv'
+LOAD DATA LOCAL INFILE '~/Desktop/movies_dashboard_22_24/data/writers.csv'
 INTO TABLE Writers
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -94,7 +94,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (movieID, nameID);
 
-LOAD DATA LOCAL INFILE '~/Desktop/movies_2324/data/ratings.csv'
+LOAD DATA LOCAL INFILE '~/Desktop/movies_dashboard_22_24/data/ratings.csv'
 INTO TABLE Ratings
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'

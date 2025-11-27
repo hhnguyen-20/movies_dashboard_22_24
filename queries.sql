@@ -1,5 +1,13 @@
 USE db;
 
+CREATE INDEX idx_genres_genre ON Genres(genre);
+
+CREATE INDEX idx_movies_startYear ON Movies(startYear);
+
+CREATE INDEX idx_ratings_numVotes ON Ratings(numVotes);
+
+CREATE INDEX idx_ratings_averageRating ON Ratings(averageRating);
+
 -- Basic queries
 -- Question 1: Who are the directors of the movies having the word 'thanksgiving' in their title?
 SELECT n.primaryName, m.primaryTitle
@@ -90,18 +98,34 @@ JOIN Ratings r ON m.movieID = r.movieID
 WHERE r.numVotes > 200000;
 
 -- Question 8: Create a view for top-rated directors and explain its performance 
--- with indexing. (View creation, then EXPLAIN on a query using it)
+-- with indexing. (View creation, then EXPLAIN and EXPLAIN ANALYZE on a query using it to compare performance)
 CREATE VIEW TopRatedDirectors AS
 SELECT 
 	n.primaryName, 
-    AVG(r.averageRating) AS avgRating, 
+    ROUND(AVG(r.averageRating), 2) AS avg_rating,
     COUNT(*) AS numMovies
 FROM Directors d
 JOIN Names n ON d.nameID = n.nameID
 JOIN Movies m ON d.movieID = m.movieID
 JOIN Ratings r ON m.movieID = r.movieID
-GROUP BY n.primaryName HAVING numMovies >= 5
+GROUP BY n.primaryName HAVING COUNT(*) >= 10
 ORDER BY avgRating DESC
 LIMIT 10;
 
-EXPLAIN SELECT * FROM TopRatedDirectors;
+EXPLAIN 
+SELECT * FROM TopRatedDirectors;
+
+EXPLAIN ANALYZE
+SELECT * FROM TopRatedDirectors;
+
+CREATE INDEX idx_ratings_movieID ON Ratings(movieID);
+
+CREATE INDEX idx_directors_nameID ON Directors(nameID);
+
+CREATE INDEX idx_directors_movieID ON Directors(movieID);
+
+EXPLAIN 
+SELECT * FROM TopRatedDirectors;
+
+EXPLAIN ANALYZE
+SELECT * FROM TopRatedDirectors;
